@@ -27,6 +27,20 @@ int main() {
             cout<<endl;
         }
     }
+/*
 
+## this is another approach for building this pattern where only 2 loops are used
+
+
+for(int line = 0; line<n; line++)
+{   
+    for(int i = 0; i<n; i++)
+        if(i==n/2) cout<<"*";
+        else if(line == n/2) cout<<"*";
+        else cout<<" ";
+}
+    cout<<endl;
+}
+*/
     return 0;
 }
