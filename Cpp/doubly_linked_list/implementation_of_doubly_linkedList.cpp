@@ -181,29 +181,70 @@ public:
     }  
 };
 
-int main()
+int main()      // The main function.
 {
-    Node* new_node = new Node(3);
+DoublyLinkedList dll;
+int choice, data, position;
 
-    DoublyLinkedList dll;
-    dll.head = new_node;
-    dll.tail = new_node;
+while(true)
+{
+    cout<<"# Doubly LINKED LIST PRACTICE : "<<endl; 
+    cout<<"1. Insert at the End."<<endl;
+    cout<<"2. to display."<<endl;
+    cout<<"3. Insert at the Head ."<<endl; 
+    cout<<"4. Insert at the Any Position ."<<endl; 
+    
+    cout<<"5. Delete at Start. "<<endl;
+    cout<<"6. Delete at End. "<<endl;
+    cout<<"7. Delete at Arbitary Position."<<endl; 
 
-    dll.insertAtStart(1);
-    dll.insertAtStart(33);
-    dll.display();
+    cout<<"any other. to exit."<<endl<<endl;
 
-    dll.insertAtEnd(1);
-    dll.insertAtEnd(33);
-    dll.display();
-    dll.insertAtPosition(22,2);
-    cout<<"hello dear"<<endl;
-    dll.display();
+    cout<<"Enter your choice : ";
+    cin>>choice;
 
-    dll.deleteAtStart();
-    dll.display();
+    switch(choice)
+    {
+        case 1:
+            cout<<"Enter the value : ";
+            cin>>data;
+            dll.insertAtEnd(data);
+            break;
+        case 2:
+            dll.display();
+            break;
+        case 3:
+            cout<<"Enter the value : ";
+            cin>>data;
+            dll.insertAtStart(data);
+            break;
+        case 4:
+            cout<<"Enter the position : ";
+            cin>>position;
+            cout<<endl;
+            cout<<"Enter the value : ";
+            cin>>data;
+            dll.insertAtPosition(position, data);
+            break;
+        case 5:
+            dll.deleteAtStart();
+            cout<<"First Node has deleted."<<endl;
+            break;
+        case 6: 
+            dll.deleteAtEnd();
+            cout<<"Last Node has deleted."<<endl;
+            break;
+        case 7:
+            cout<<"Enter the position : ";
+            cin>>position;
+            cout<<endl;
+            dll.deleteAtPosition(position);
+            break;
+        default:
+            return 0;   
+    }
+}
 
-    dll.deleteAtEnd();
-    dll.display();
     return 0;
 }
+
