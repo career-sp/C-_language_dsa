@@ -1,3 +1,7 @@
+/* 
+Merge sort is a divide and conquere technique.
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -37,11 +41,25 @@ void merge(vector<int> &a, vector<int> &b, vector<int> &result) // merge two sor
     
 }
 
-void merge_sort(vector<int> v)
+void merge_sort(vector<int> &v)
 {
+    if(v.size() <= 1) return;  // base case
 
+    int n = v.size();
+    int n1 = n/2;
+    int n2 = n - n1;
 
+    vector<int>a(n1);
+    vector<int>b(n2);
 
+    for(int i=0; i<n1; i++) a[i] = v[i];
+    for(int i=0; i<n2; i++) b[i] = v[i+n1];;
+
+    // recursion logic.
+    merge_sort(a);
+    merge_sort(b);
+
+    merge(a,b,v);
 }
 
 int main()
@@ -57,10 +75,11 @@ int main()
 
     // merge(a, b, result);
 
-    int arr[] = {2, 3, 6, 9,11,18};
+    int arr[] = {11, 2, 10, 5, 3, 4, 77, 7};
     int n = sizeof(arr)/sizeof(arr[0]);
-    vector<int> result(n);
+    vector<int> result(arr, arr+n);
 
+    merge_sort(result);
 
     cout << "The elements are : ";
     for (int ele : result)
